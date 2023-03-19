@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://done-k.github.io</id>
-    <title>Gridea</title>
+    <title>Done-k</title>
     <updated>2021-04-27T14:56:23.856Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://done-k.github.io"/>
