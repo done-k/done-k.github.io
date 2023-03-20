@@ -829,7 +829,6 @@ td {
 }
 .archives-container {
   padding: 32px;
-  flex: 1;
 }
 .archives-container .year {
   font-size: 1.375rem;

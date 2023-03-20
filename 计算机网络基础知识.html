@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>计算机网络基础知识</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='计算机网络基础知识'><span>计算机网络基础知识</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#计算机网络基础知识">计算机网络基础知识</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7"><a class="md-toc-inner" href="#1网络层次划分">1.网络层次划分</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n12"><a class="md-toc-inner" href="#2osi七层网络模型">2.OSI七层网络模型</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n15"><a class="md-toc-inner" href="#1）物理层physical-layer）">1）物理层（Physical Layer）</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n17"><a class="md-toc-inner" href="#2）数据链路层data-link-layer）">2）数据链路层（Data Link Layer）</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n24"><a class="md-toc-inner" href="#3）网络层network-layer）">3）网络层（Network Layer）</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n36"><a class="md-toc-inner" href="#4）传输层transport-layer）">4）传输层（Transport Layer）</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n41"><a class="md-toc-inner" href="#5）会话层">5）会话层</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n43"><a class="md-toc-inner" href="#6）表示层">6）表示层</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n45"><a class="md-toc-inner" href="#7）应用层">7）应用层</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n49"><a class="md-toc-inner" href="#3ip地址">3.IP地址</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n50"><a class="md-toc-inner" href="#1网络地址">1)网络地址</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n52"><a class="md-toc-inner" href="#2）广播地址">2）广播地址</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n55"><a class="md-toc-inner" href="#3）组播地址">3）组播地址</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n63"><a class="md-toc-inner" href="#4）255255255255">4）255.255.255.255</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n66"><a class="md-toc-inner" href="#5）0000">5）0.0.0.0</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n68"><a class="md-toc-inner" href="#6）回环地址">6）回环地址</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n70"><a class="md-toc-inner" href="#7）abc类私有地址">7）A、B、C类私有地址</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n75"><a class="md-toc-inner" href="#4子网掩码及网格划分">4.子网掩码及网格划分</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n83"><a class="md-toc-inner" href="#1）利用子网数来计算">1）利用子网数来计算</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n90"><a class="md-toc-inner" href="#2）利用主机数来计算">2）利用主机数来计算</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n98"><a class="md-toc-inner" href="#3）还有一种题型要你根据每个网络的主机数量进行子网地址的规划和计算子网掩码这也可以按上述原则进行计算">3）还有一种题型，要你根据每个网络的主机数量进行子网地址的规划和计算子网掩码。这也可以按上述原则进行计算。</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n104"><a class="md-toc-inner" href="#5arprarp协议">5.ARP/RARP协议、</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n127"><a class="md-toc-inner" href="#6路由器选择协议">6.路由器选择协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n131"><a class="md-toc-inner" href="#7tcpip协议">7.TCP/IP协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n147"><a class="md-toc-inner" href="#8udp协议">8.UDP协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n158"><a class="md-toc-inner" href="#9dns协议">9.DNS协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n160"><a class="md-toc-inner" href="#10nat协议">10.NAT协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n162"><a class="md-toc-inner" href="#11dhcp协议">11.DHCP协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n164"><a class="md-toc-inner" href="#12http协议">12.HTTP协议</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n177"><a class="md-toc-inner" href="#13一个举例">13.一个举例</a></span></p></div><p><span>        计算机网络学习的核心内容就是网络协议的学习。网络协议是为计算机网络中进行数据交换而建立的规则、标准或者说是约定的集合。因为不同用户的数据终端可能采取的字符集是不同的，两者需要进行通信，必须要在一定的标准上进行。</span></p><p><span>        目前TCP/IP（Transmission Control Protocol/Internet Protocol ，传输控制协议/网际协议）协议已经成为Internet中的&quot;通用语言&quot;，下图为不同计算机群之间利用TCP/IP进行通信的示意图。</span><img src="C:\Users\32231\AppData\Roaming\Typora\typora-user-images\image-20221220184443679.png" referrerpolicy="no-referrer" alt="image-20221220184443679"></p><h4 id='1网络层次划分'><span>1.网络层次划分</span></h4><p><span>        为了使不同计算机厂家生产的计算机能够相互通信，以便在更大的范围内建立计算机网络，国际化标准组织（ISO）在1978年提出了“开放系统互联参考模型”，即著名的OSI/RM模型（Open System Interconnection/Referrence Model）。他将计算机网络体系结构的通信协议划分为七层，自下而上分别是：物理层（Physics Layer）、数据链路层（Data Link Layer）、网络层（Network Layer）、传输层（Transport Layer）、会话层（Presentation Layer）、表示层（Presentation Layer）、应用层（Application Layer）。其中第四层完成数据传送服务，上面三层面向用户。</span></p><p><span>        除了标准的OSI七层模型以外，常见的网络层次划分还有TCP/IP四层协议以及TCP/IP五层协议，它们之间的对应关系如下图所示：</span></p><p><img src="C:\Users\32231\AppData\Roaming\Typora\typora-user-images\image-20221220190600857.png" referrerpolicy="no-referrer" alt="image-20221220190600857"></p><p>&nbsp;</p><h4 id='2osi七层网络模型'><span>2.OSI七层网络模型</span></h4><p><span>        TCP/IP协议是互联网的基础协议。不管是OSI七层模型还是TCP/IP的四层、五层模型，每一层中都要自己的专属协议，完成自己相应的工作以及与上下层之间的沟通。由于OSI七层模型为网络的标准层次划分，所以我们以OSI七层模型为例从下向上进行一一介绍。</span></p><p><img src="C:\Users\32231\AppData\Roaming\Typora\typora-user-images\image-20221220192559980.png" referrerpolicy="no-referrer" alt="image-20221220192559980"></p><h5 id='1）物理层physical-layer）'><span>1）物理层（Physical Layer）</span></h5><p><span>        激活、维持、关闭通信端点之间的机械特性、电气特性、功能特性以及过程特征。</span><strong><span>该层为上层协议提供了一个传输数据的可靠的物理媒体。简单来说，物理层确保原始的数据可在各种物理媒体上传输。</span></strong><span>物理层有两个重要的设备名称，中继器（Repeater,也叫放大器）和集线器。</span></p><h5 id='2）数据链路层data-link-layer）'><span>2）数据链路层（Data Link Layer）</span></h5><p><span>数据链路层在物理层提供的服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠的传输到相邻节点的目标机网络层。为达到这一目的，数据数据链路层必须具有一系列相应的功能，主要有:如何将数据组合成数据块，在数据链路层中称这种数据块为帧（frame）,帧是数据链路层的传送单位；如何控制帧在物理信道上的传输，包括如何处理传输差错，如何调节发送速率以使与接收方相匹配；以及在两个网络实体之间提供数据链路的建立、维持和释放的管理。数据链路层在不可靠的物理媒介上提供可靠的传输。该层的作用包括：物理地址寻址、数据的成帧、流量的控制、数据的检错、重发等。</span></p><p><span>有关数据链路层的重要知识点：</span></p><p><span>1.数据链路层为网络层提供可靠的数据传输；</span></p><p><span>2.基本数据单位为帧；</span></p><p><span>3.主要的协议为：以太网协议；</span></p><p><span>4.两个重要设备名称：网桥和交换机。</span></p><h5 id='3）网络层network-layer）'><span>3）网络层（Network Layer）</span></h5><p><span>网络层的目的是实现两个端系统之间的数据透明传送，具体功能包括寻址和路由选择、连接的建立、保持和终止等。它提供的服务使传输层不需要了解网络中的数据传输和交换技术。“路由选择、路由及逻辑寻址”。</span></p><p><span>网络层中涉及众多的协议，其中包括最重要的协议，也是TCP/IP的核心协议——IP协议。IP协议非常简单，仅提供不可靠、无连接的传送服务。IP地址的主要功能有：无连接数据报传输、数据路由选择和差错控制。与IP协议配套使用实现其功能的还有地址解析协议ARP、逆地址解析协议RARP、因特网报文协议ICMP、因特网组管理协议IGMP。</span></p><p><span>有关网络层的重点为：</span></p><p><span>1.网络层负责对子网间的数据包进行路由选择。此外，网络层还可以实现拥塞控制、网络互连等功能；</span></p><p><span>2.基本数据单位为IP数据报；</span></p><p><span>3.包含的主要协议：</span></p><p><span>IP协议（Internet Protocol,因特网互连协议）</span></p><p><span>ICMP协议（Internet Control Message  Protocol,因特网控制报文协议）</span></p><p><span>ARP协议（Address Resolution Protocol,地址解析协议）</span></p><p><span>RARP协议（Reverse Address Resolution Protocol,逆地址解析协议）</span></p><p><span>4.重要的设备：路由器。</span></p><h5 id='4）传输层transport-layer）'><span>4）传输层（Transport Layer）</span></h5><p><span>第一个端到端，即主机到主机的层次。传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的或不可靠的传输。此外，传输层还要处理端到端的差错控制和流量控制问题。传输层的任务是根据通信子网的特性，最佳的利用网络资源，为两个端系统的会话层之间，提供建立、维护和取消传输连接的功能，负责端到端的可靠数据传输。在这一层，信息传送的协议数据单元称为段或报文。网络层只是根据网络地址将源节点发出的数据包传送到目的节点，而传输层则负责将数据可靠的传送到相应的端口。有关传输层的重点：</span></p><p><span>1.传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输以及端到端的差错控制和流量控制问题；</span></p><p><span>2.包含的主要协议：TCP协议（Transmission Control Protocol,传输控制协议）、UDP协议（User Datagram Protocol,用户数据报协议）</span></p><p><span>3.重要设备：网关</span></p><h5 id='5）会话层'><span>5）会话层</span></h5><p><span>会话层管理主机之间的会话进程，即负责建立、管理、终止进程之间的会话。会话层还利用在数据中插入校验点来实现数据的同步。</span></p><h5 id='6）表示层'><span>6）表示层</span></h5><p><span>表示层对上层数据或信息进行变换以保证一个主机应用层信息可以被另一个主机的应用程序理解。表示层的数据转换包括数据的加密、压缩、格式转换。</span></p><h5 id='7）应用层'><span>7）应用层</span></h5><p><span>为操作系统或网络应用程序提供访问网络服务的接口。</span></p><p><span>1.数据传输基本单位为报文；</span></p><p><span>2.包含的主要协议：TCP协议（Transmission Control Protocol,传输控制协议）、UDP协议（User Datagram Protocol,用户数据报协议）POP3协议（邮局协议,Post Office Protocol - Version 3”，即“版本3）、HTTP协议（Hyper Text Transfer Protocol,超文本传输协议）</span></p><h4 id='3ip地址'><span>3.IP地址</span></h4><h5 id='1网络地址'><span>1)网络地址</span></h5><p><span>IP地址由网络号（包括子网号）和主机号组成，网络地址的主机号全为0，网络地址代表着整个网络。</span></p><h5 id='2）广播地址'><span>2）广播地址</span></h5><p><span>广播地址通常成为直接广播地址，是为了区分受限广播地址。</span></p><p><span>广播地址与网络地址的主机号正好相反，广播地址中，主机号为全1。当某个网络的广播地址发送消息时，该网络内的所有主机都能接收到该广播消息。</span></p><h5 id='3）组播地址'><span>3）组播地址</span></h5><p><span>D类地址就是组播地址。</span></p><p><span>A类地址以0开头，第一个字节作为网络号，地址范围为：0.0.0.0~127.255.255.255；</span></p><p><span>B类地址以10开头，前两个字节作为网络号，地址范围为：128.0.0.0~191.255.255.255；</span></p><p><span>C类地址以110开头，前三个字节作为网络号，地址范围为：192.0.0.0~223.255.255.255</span></p><p><span>D类地址以1110开头，地址范围为224.0.0.0~223.255.255.255，D类地址作为组播地址（一对多的通信）；</span></p><p><span>E类地址以1111开头，地址范围是240.0.0.0~2255.255.255.255，E类地址作为保留地址，供以后使用</span></p><p><span>注：只有A，B，C有网络号和主机号之分，D类地址和E类地址没有划分网络号和主机号。</span></p><h5 id='4）255255255255'><span>4）255.255.255.255</span></h5><p><span>该IP地址指的是受限的广播地址。受限广播地址与一般广播地址（直接广播地址）的区别在于，受限广播地址只能用于本地网络，路由器不会转发以受限广播地址为目的地的分组；一般广播地址即可在本地广播，也可跨网段广播。例如：主机192.168.1.1/30上的直接广播数据包后，另外一个网段192.168.1.5/30也能收到该数据报；若发送受限广播数据报，则不能收到。</span></p><p><span>注：一般的广播地址（直接广播地址）能够通过某些路由器（当然不是所有的路由器），而受限的广播地址不能通过路由器。</span></p><h5 id='5）0000'><span>5）0.0.0.0</span></h5><p><span>常用于寻找自己的IP地址，例如在我们的RARP，BOOTP和DHCP协议中，若某个未知IP地址的</span><a href='https://baike.baidu.com/item/无盘机?fromModule=lemma_search-box'><span>无盘机</span></a><span>想要知道自己的IP地址，它就以255.255.255.255为目的地址，向本地范围（具体而言是被各个路由器屏蔽的范围内）的服务器发送IP请求分组。</span></p><h5 id='6）回环地址'><span>6）回环地址</span></h5><p><span>127.0.0.0/8备用做回环地址，回环地址表示本机的地址，常用于对本机的测试，用的最多的是127.0.0.1</span></p><h5 id='7）abc类私有地址'><span>7）A、B、C类私有地址</span></h5><p><span>私有地址（private address）也叫专用地址，它们不会在全球使用，更具有本地意义。</span></p><p><span>A类私有地址：10.0.0.0/8，范围是：10.0.0.0~10.255.255.255</span></p><p><span>B类私有地址：172.16.0.0/12，范围是：172.16.0.0~172.31.255.255</span></p><p><span>C类私有地址：192.168.0.0/16，范围是：192.168.0.0~192.168.255.255</span></p><h4 id='4子网掩码及网格划分'><span>4.子网掩码及网格划分</span></h4><p><span>随着互联网应用的不断扩大，原先的IPv4的弊端也逐渐暴露出来，即网络号占位太多，而主机位太少，所以其能提供的主机地址也越来越稀缺，目前除了使用NAT在企业内部利用保留地址自行分配以外，通常都对一个高类别的IP地址进行再划分，形成多个子网，提供给不同规模的用户群使用。</span></p><p><span>这里主要是为了在网络分段的情况下有效利用IP地址，通过对主机号的高位部分取作为子网号，从通常的网络界限中扩展或压缩子网掩码，来创建更多的子网时，在每个子网的可用主机地址数目会比原先减少。</span></p><p><span>什么是子网掩码？</span></p><p><span>子网掩码是标志两个IP地址是否属于一个子网的，也是32位二进制地址，其每一个1代表该位是网络位，为0代表主机位。它和IP地址一样也是使用点式十进制来表示的。如果两个IP地址是在子网掩码的按位与的计算下所得结果相同，即表明它们共属于同一子网中。在计算子网掩码时，我们要注意IP地址中的保留地址，即“0”地址和广播地址，它们是指主机地址或网络地址全为“0”或“1”时的IP地址，它们代表着本网络和广播地址，一般是不能计算在内的。</span></p><p><span>子网掩码的计算：</span></p><p><span>对于无须再划分成子网的IP地址来说，其子网掩码非常简单，即按照定义即可写出：如某类B类IP地址为10.12.3.0，无需再分割子网，则该IP地址的子网掩码为255.255.0.0 。如果它是一个C类地址则其子网掩码为255.255.255.0 。其他类推。下面我们关键要介绍的是一个IP地址，还需要将其高位机再作为划分出的子网网络号，剩下的是每个子网的主机号，这是该如何进行每个子网的掩码计算。</span></p><p><span>下面总结一下有关子网掩码和网络划分常见的面试考题：</span></p><h5 id='1）利用子网数来计算'><span>1）利用子网数来计算</span></h5><p><span>在求子网掩码之前必须先搞清楚要划分的子网数目，以及每个子网内的所需主机数目。</span></p><p><span>（1）将子网数目转化为二进制来表示；</span></p><p><span>如欲将B类IP地址168.195.0.0划分为27个子网：27=11011；</span></p><p><span>（2）取得该二进制数的位数，为N；</span></p><p><span>该二进制数为5位数，N=5</span></p><p><span>（3）取得该IP地址的类子网掩码255.255.0.0的主机前五位置1，得到255.255.248.0</span></p><h5 id='2）利用主机数来计算'><span>2）利用主机数来计算</span></h5><p><span>如欲将B类IP地址168.195.0.0划分成若干子网，每个子网内有主机700台：</span></p><p><span>（1）将主机数目转化为二进制来表示；</span></p><p><span>700=101011100</span></p><p><span>（2）如果主机数≤254（注意去掉保留的两个IP地址）则取得该主机二进制位数，为N，这里肯定N&lt;8。如果大于254，则N＞8，这就是说主机地址将占据不止8位；</span></p><p><span>该二进制为十位数，N＝10；</span></p><p><span>（3）使用255.255.255.255来讲该类IP地址的主机地址位数全部置1，然后从后向前的将N位全部置0，即为子网掩码值。</span></p><p><span>将该B类地址的子网掩码255.255.0.0的主机地址全部置1，然后得到255.255.255.255，然后再从后向前将后十位置0，即为11111111.11111111.11111100.00000000，即255.255.252.0这就是该欲划分成700台的B类IP地址168.195.0.0的子网掩码。</span></p><h5 id='3）还有一种题型要你根据每个网络的主机数量进行子网地址的规划和计算子网掩码这也可以按上述原则进行计算'><span>3）还有一种题型，要你根据每个网络的主机数量进行子网地址的规划和计算子网掩码。这也可以按上述原则进行计算。</span></h5><p><span>比如一个子网有10台主机，那么对于这个子网需要的IP地址是：</span></p><p><span>10+1+1+1=13</span></p><p><span>注意：加的第一个1是指这个网络连接所需要的网关地址，接着的两个1分别是指网络地址和广播地址。</span></p><p><span>因为13小于16（2的4次方），所以主机位为4位。而256-16=240，所以该子网掩码为255.255.255.240 。</span></p><p><span>如果一个子网有14台主机，不少人常犯的错误是：依然分配16个地址空间的子网，而忘记了给网关分配地址。这样就错误了，因为14+1+1+1=17，17大于16，所以我们只能分配32个地址（32等于2的5次方）空间的子网。这是子网的掩码为：255.255.255.224 。</span></p><h4 id='5arprarp协议'><span>5.ARP/RARP协议、</span></h4><p><span>地址解析协议，即ARP（Address Resolution Protocol）,是根据IP地址获取物理地址的一个TCP/IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到网络的所有主机，并接受返回信息，以此确定目标的物理地址；收到返回信息后将该IP地址和物理地址存入本机ARP缓存中并保留一段时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机相互信任的基础上的，网络上的主机可以主动发送ARP应答信息，其他主机收到应答报文时不会检测报文的真实性就会将其计入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺诈。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、增加或删除静态对应关系等。</span></p><p><span>ARP工作流程举例：</span></p><p><span>主机A的IP地址为192.168.1.1，MAC地址为0A-11-22-33-44-01；</span></p><p><span>主机B的IP地址为192.168.1.2，MAC地址为0A-11-22-33-44-02；</span></p><p><span>当主机A要与主机B通信时，地址解析协议可以将主机B的IP地址（192.168.1.2）解析成B的MAC地址，以下为工作流程：</span></p><p><span>（1）根据主机A上的路由表内容，IP确定用于访问主机B的转发地址是192.168.1.2。然后A主机在自己的本地ARP缓存中检查主机B的匹配MAC地址。</span></p><p><span>（2）如果主机A在ARP缓存中没有找到映射，它将询问192.168.1.2的硬件地址，从而将ARP请求帧广播到本地网络上的所有主机。源主机的IP地址和MAC地址都包括在ARP请求中。本地网络上的每台主机都要接受ARP请求并检查是否与自己的IP地址匹配。如果主机发现请求的IP地址和自己的IP地址不匹配，它将自动丢弃ARP请求。</span></p><p><span>（3）主机B确定ARP请求中的IP地址匹配，则将主机A的IP地址和MAC地址映射添加到本地ARP缓存中。</span></p><p><span>（4）主机B将包含其MAC地址的ARP回复消息直接发送回主机A。</span></p><p><span>（5）当主机A收到从主机B发来的ARP回复消息时，会用主机B的IP和MAC地址映射更新ARP缓存。本机缓存时有生存期的，生存期结束后，将再次重复上述上面的过程。主机B的MAC地址一旦确定，主机A就能向主机B发送IP通信了。</span></p><p><span>逆地址解析协议，即RARP，功能和ARP协议相对，其将局域网中某个主机的物理地址转换为IP地址</span></p><p><span>比如局域网中有一台主机只知道物理地址而不知道IP地址，那么可以通过RARP协议发出征求自己IP地址的广播请求，然后由RARP服务器负责回答。</span></p><p><span>RARP协议的工作流程：</span></p><ul><li><span>（1）给主机发送一个本地的RARP广播，在此广播包中，声明自己的MAC地址并且请求任何收到此请求的RARP服务器分配一个IP地址；</span></li><li><span>（2）本地网段上的RARP服务器收到此请求后，检查其RARP列表，查找该MAC地址对应的IP地址；</span></li><li><span>（3）如果存在，RARP服务器就给源主机发送一个响应数据包并将此IP地址提供给对方主机使用；</span></li><li><span>（4）如果不存在，RARP服务器对此不做任何的响应；</span></li></ul><h4 id='6路由器选择协议'><span>6.路由器选择协议</span></h4><p><span>常见的路由选择协议有：RIP协议、OSPF协议。</span></p><p><strong><span>RIP协议</span></strong><span> ：底层是贝尔曼福特算法，它选择路由的度量标准（metric)是跳数，最大跳数是15跳，如果大于15跳，它就会丢弃数据包。</span></p><p><strong><span>OSPF协议</span></strong><span> ：Open Shortest Path First开放式最短路径优先，底层是迪杰斯特拉算法，是链路状态路由选择协议，它选择路由的度量标准是带宽，延迟。</span></p><h4 id='7tcpip协议'><span>7.TCP/IP协议</span></h4><p><strong><span>TCP/IP协议是Internet最基本的协议、Internet国际互联网络的基础，由网络层的IP协议和传输层的TCP协议组成。通俗而言：TCP负责发现传输的问题，一有问题就发出信号，要求重新传输，直到所有数据安全正确地传输到目的地。而IP是给因特网的每一台联网设备规定一个地址。</span></strong></p><p><span>IP层接收由更低层（网络接口层例如以太网设备驱动程序）发来的数据包，并把该数据包发送到更高层---TCP或UDP层；相反，IP层也把从TCP或UDP层接收来的数据包传送到更低层。IP数据包是不可靠的，因为IP并没有做任何事情来确认数据包是否按顺序发送的或者有没有被破坏，IP数据包中含有发送它的主机的地址（源地址）和接收它的主机的地址（目的地址）。</span></p><p><span>TCP是面向连接的通信协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。TCP提供的是一种可靠的数据流服务，采用&quot;带重传的肯定确认&quot;技术来实现传输的可靠性。TCP还采用一种称为&quot;滑动窗口&quot;的方式进行流量控制，所谓窗口实际表示接收能力，用以限制发送方的发送速度。</span></p><p><strong><span>TCP报文首部格式：</span></strong></p><p><img src="C:\Users\32231\AppData\Roaming\Typora\typora-user-images\image-20221223212741598.png" referrerpolicy="no-referrer" alt="image-20221223212741598"></p><p><strong><span>TCP协议的三次握手和四次挥手：</span></strong></p><p><img src="C:\Users\32231\AppData\Roaming\Typora\typora-user-images\image-20221223212807209.png" referrerpolicy="no-referrer" alt="image-20221223212807209"></p><p><span>　</span><strong><span>注：seq</span></strong><span>:&quot;sequance&quot;序列号；</span><strong><span>ack</span></strong><span>:&quot;acknowledge&quot;确认号；</span><strong><span>SYN</span></strong><span>:&quot;synchronize&quot;请求同步标志；</span><strong><span>；ACK</span></strong><span>:&quot;acknowledge&quot;确认标志&quot;</span><strong><span>；*</span></strong><span>*FIN**：&quot;Finally&quot;结束标志。</span></p><p><strong><span>TCP连接建立过程：</span></strong><span>首先Client端发送连接请求报文，Server段接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server段发生ACK报文，并分配资源，这样TCP连接就建立了。</span></p><p><strong><span>TCP连接断开过程：</span></strong><span>假设Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说&quot;我Client端没有数据要发给你了&quot;，但是如果你还有数据没有发送完成，则不必急着关闭Socket，可以继续发送数据。所以你先发送ACK，&quot;告诉Client端，你的请求我收到了，但是我还没准备好，请继续你等我的消息&quot;。这个时候Client端就进入FIN_WAIT状态，继续等待Server端的FIN报文。当Server端确定数据已发送完成，则向Client端发送FIN报文，&quot;告诉Client端，好了，我这边数据发完了，准备好关闭连接了&quot;。Client端收到FIN报文后，&quot;就知道可以关闭连接了，但是他还是不相信网络，怕Server端不知道要关闭，所以发送ACK后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。&quot;，Server端收到ACK后，&quot;就知道可以断开连接了&quot;。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！</span></p><p><strong><span>为什么要三次握手？</span></strong></p><p><span>在只有两次&quot;握手&quot;的情形下，假设Client想跟Server建立连接，但是却因为中途连接请求的数据报丢失了，故Client端不得不重新发送一遍；这个时候Server端仅收到一个连接请求，因此可以正常的建立连接。但是，有时候Client端重新发送请求不是因为数据报丢失了，而是有可能数据传输过程因为网络并发量很大在某结点被阻塞了，这种情形下Server端将先后收到2次请求，并持续等待两个Client请求向他发送数据...问题就在这里，Cient端实际上只有一次请求，而Server端却有2个响应，极端的情况可能由于Client端多次重新发送请求数据而导致Server端最后建立了N多个响应在等待，因而造成极大的资源浪费！所以，&quot;三次握手&quot;很有必要！</span></p><p><strong><span>为什么要四次挥手？</span></strong></p><p><span>试想一下，假如现在你是客户端你想断开跟Server的所有连接该怎么做？第一步，你自己先停止向Sever端发送数据，并等待Server的回复。但事情还没有完，虽然你自身不向Server发送数据了，但是因为你们之前已经建立好平等的连接了，所以此时他也有主动权向你发送数据；故Server端还得终止主动向你发送数据，并等待你的确认。其实，说白了就是保证双方的一个合约的完整执行！</span></p><p><span>使用TCP的协议:FTP(文件传输协议)、Telnet（远程登陆协议）、SMTP（简单邮件传输协议）、POP3（和SMTP相对，用于接收邮件）、HTTP协议等。</span></p><h4 id='8udp协议'><span>8.UDP协议</span></h4><p><strong><span>UDP用户数据报协议，是面向无连接的通讯协议，UDP数据包括目的端口号和源端口信息，由于通讯不需要连接，所以可以实现广播发送。</span></strong></p><p><span>UDP通讯时不需要接收方确认，属于不可靠的传输，可能会出现丢包的现象，实际应用中要求程序员编程验证。</span></p><p><span>UDP与TCP位于同一层，但它不管数据包的顺序、错误或重发。因此，UDP不被应用于那些使用虚电路的面向连接的服务，UDP主要用于那些面向查询——应答的服务，例如NFS。相对于FTP或Telnet，这些服务需要交换的信息量较小。</span></p><p><span>每个UDP报文分UDP报头和UDP数据区两部分。报头由四个16位长（2字节）字段组成，分别说明该报文的源端口、目的端口、报文长度以及校验值。UDP报头由4个域组成，其中每个域占用2个字节，具体如下：</span></p><p><span>（1）源端口号；</span></p><p><span>（2）目标端口号；</span></p><p><span>（3）数据报长度；</span></p><p><span>（4）校验值。</span></p><p><span>使用UDP协议包括：TFTP（简单文件传输协议）、SNMP（简单网络管理协议）、DNS（域名解析协议）、DNS（域名解析协议）、NFS、BOOTP。</span></p><p><span>TCP和UDP的区别：TCP是面向连接的，可靠的字节服务；UDP是面向无连接的，不可靠的数据报服务。</span></p><h4 id='9dns协议'><span>9.DNS协议</span></h4><p><span>DNS域名是域名系统（DomainNameSystem）的缩写，该系统用于命名组织到域层次结构中的计算机和网络服务，可以简单理解为将URL转换为IP地址。域名是由圆点分开一串单词或缩写组成的，每一个域名都对应一个唯一的IP地址，在internet上域名和IP地址是一一对应的，DNS就是进行域名解析的服务器。DNS命名用于Internet等TCP/IP网络中，通过用户友好的查找计算机和服务。</span></p><h4 id='10nat协议'><span>10.NAT协议</span></h4><p><span>NAT网络地址转化（Network Address Translation）属接入广域网（WAN）技术，是一种将私有（保留）地址转换为合法IP地址的转换技术，它被广泛地应用于各种类型Internet接入方式和各种类型的网络中。原因很简单，NAT不仅完美地解决了IP地址不足的问题，还能够有效的避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</span></p><h4 id='11dhcp协议'><span>11.DHCP协议</span></h4><p><span>DHCP动态主机设置协议（Dynamic Host Configuration Potocol）是一个局域网的网络协议，使用UDP协议工作，主要有两个用途：给内部网络或网络服务供应商自动分配IP地址，给用户或内部网络管理员作为对所有计算机中央管理的手段。</span></p><h4 id='12http协议'><span>12.HTTP协议</span></h4><p><span>超文本传输协议（HTTP，Hyper Text Transfer Protocol）是互联网上应用最为广泛的一种网络协议。所有的www文件都必须遵守这个标准。</span><strong><span>HTTP协议包括哪些请求？</span></strong></p><p><span>GET：请求读取由URL所标志的信息。</span></p><p><span>POST：给服务器添加信息（如注释）。</span></p><p><span>PUT：在给定的URL下存储一个文档。</span></p><p><span>DELETE：删除给定的URL所标志的资源。</span></p><p><strong><span>HTTP中，POST与GET的区别</span></strong></p><p><span>1）Get是从服务器上获取数据，Post是向服务器传送数据。</span></p><p><span>2）Get是把参数数据队列加到提交表单的Action属性所指向的URL中，值和表单内各个字段一一对应，在URL中可以看到。</span></p><p><span>3）Get传送的数据量小，不能大于2KB；Post传送的数据量较大，一般被默认为不受限制。</span></p><p><span>4）根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的。</span></p><p><span>1.所谓的</span><strong><span>安全的</span></strong><span>意味着该操作用于获取信息而非修改信息。换句话说，GET请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</span></p><p><span>2.</span><strong><span>幂等</span></strong><span>的意味着对同一URL的多个请求返回同样的结果。</span></p><h4 id='13一个举例'><span>13.一个举例</span></h4><p><span>在浏览器输入</span><a href='http://www/baidu.com/' target='_blank' class='url'>http://www/baidu.com/</a><span>后执行的全部过程。</span></p><p><span>现在假设如果我们在客户端（客户端）输入</span><a href='http://www.baidu.com' target='_blank' class='url'>http://www.baidu.com</a><span>,而baidu.com为要访问的服务器（服务器），下面详细分析客户端为了访问服务器而执行的一系列关于协议的操作：</span></p><p><span>1）客户端浏览器通过DNS解析到</span><a href='http://www.baidu.com' target='_blank' class='url'>www.baidu.com</a><span>的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.161.27.48，然后通过TCP进行封装数据包，输入到网络层。</span></p><p><span>2）在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。</span></p><p><span>3）客户端的网络层不用关系应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，不作太多的描述，为非就是通过查找路由表决定通过那个路径到达服务器。</span></p><p><span>4）客户端的链路层，包括通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
